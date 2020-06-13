@@ -1,0 +1,153 @@
+\documentclass[
+	draft=false,
+	paper=a4,
+	paper=portrait,
+	parskip=half,
+	pagesize=auto,
+	fontsize=12pt,
+	version=last,
+	listof=totoc,
+	oneside,
+	footlinesep,
+	bibtotoc
+]{scrartcl}
+
+\newcommand{\me}{David Scheid, Maximilian Stefanac, Jonas Strube}
+\newcommand{\course}{WWI17B1}
+\newcommand{\company}{SAP SE}
+\newcommand{\supervisor}{Andreas T. Fütterer}
+\newcommand{\handoverdate}{19.06.2020}
+\newcommand{\mytitle}{Smart City Hamburg -  Eine Betrachtung der Konzepte mit ihren Stärken und Schwächen}
+
+
+\usepackage[T1]{fontenc}
+\usepackage[a4paper]{geometry}
+\usepackage[ngerman]{babel}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{mathrsfs}
+\usepackage{caption}
+\usepackage{booktabs}
+\usepackage{rotating}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{subfigure}
+\usepackage{pgf}
+\usepackage{tikz}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows,shapes,snakes,automata,backgrounds,petri,positioning}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage[babel, german=quotes]{csquotes}
+\usepackage{blindtext}
+\usepackage{textcomp}
+\usepackage{nameref}
+\usepackage[printonlyused]{acronym}
+\usepackage[style=iso-authoryear,isbn=false,eprint=false,maxcitenames=2]{biblatex}
+\usepackage{url}
+%\usepackage{varioref}
+\usepackage[hidelinks]{hyperref} %!Last Package
+
+\addbibresource{literature.bib}
+% URL Umbrüche
+\setcounter{biburllcpenalty}{9000}
+\setcounter{biburlucpenalty}{9000}
+
+\pagestyle{fancy}
+
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0.5pt}
+\fancyhf{}
+\fancyfoot[R]{\thepage}
+
+\geometry{
+	top=2.5cm,
+	bottom=1.25cm,
+	left=3.5cm,
+	right=2.5cm,
+	includefoot,
+	footskip=1.25cm
+}
+
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{korollar}{Korollar}[section]
+
+\newcounter{alphasect}
+
+\renewcommand\thesection{%
+	\ifnum\value{alphasect}=1%
+	A%%
+	\else
+	\ifnum\value{alphasect}=2%
+	B%%
+	\else
+	\ifnum\value{alphasect}=3%
+	C%%
+	\else
+	\ifnum\value{alphasect}=4%
+	D%%
+	\else
+	\arabic{section}%%
+	\fi\fi\fi\fi}%
+
+\newenvironment{asection}{%
+	\setcounter{alphasect}{1}%%
+}{%
+	\setcounter{alphasect}{0}%%
+}%
+
+\newenvironment{bsection}{%
+	\setcounter{alphasect}{2}%%
+}{%
+	\setcounter{alphasect}{0}%%
+}%
+
+
+\begin{document}
+	\include{0_title}
+	\thispagestyle{empty}
+	\onehalfspacing
+	\include{0_selbststaendigkeitserklaerung}
+	
+	\pagenumbering{Roman}
+	\tableofcontents
+	\clearpage
+	
+	\include{abkuerzungen}
+	
+	\listoffigures
+	\listoftables
+	\clearpage
+	
+	\pagenumbering{arabic}
+	\include{1_Einleitung}
+	
+	\include{2_Smart_Mobility}
+	
+	\include{3_Smart_Governance}
+	
+	\include{4_Smart_Environment}
+	
+	\include{5_SWOT_Analyse}
+	
+	\include{6_Fazit}
+	
+	
+	\part*{Anhang}
+	\clearpage
+	
+	\include{beigabenverzeichnis}
+	
+	\begin{asection}
+		\include{a_bearbeitungsaufteilung}
+	\end{asection}
+%
+%	\begin{bsection}
+%		\include{b_tile_service_vergleich}
+%	\end{bsection}
+	
+	
+\end{document}
