@@ -48,12 +48,15 @@
 \usepackage[style=iso-authoryear,isbn=false,eprint=false,maxcitenames=2]{biblatex}
 \usepackage{url}
 %\usepackage{varioref}
+\usepackage{xparse}
 \usepackage[hidelinks]{hyperref} %!Last Package
 
 \addbibresource{literature.bib}
 % URL Umbrüche
 \setcounter{biburllcpenalty}{9000}
 \setcounter{biburlucpenalty}{9000}
+\widowpenalty=10000
+\clubpenalty=10000
 
 \pagestyle{fancy}
 
@@ -70,10 +73,6 @@
 	includefoot,
 	footskip=1.25cm
 }
-
-\theoremstyle{definition}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{korollar}{Korollar}[section]
 
 \newcounter{alphasect}
 
@@ -105,6 +104,13 @@
 	\setcounter{alphasect}{0}%%
 }%
 
+\let\oldquote\quote
+\let\endoldquote\endquote
+\RenewDocumentEnvironment{quote}{om}
+{\oldquote}
+{\par\nobreak\smallskip
+	\hfill(#2\IfValueT{#1}{~---~#1})\endoldquote 
+	\addvspace{\bigskipamount}}
 
 \begin{document}
 	\include{0_title}
@@ -116,10 +122,8 @@
 	\tableofcontents
 	\clearpage
 	
-	\include{abkuerzungen}
-	
 	\listoffigures
-	\listoftables
+	%	\listoftables
 	\clearpage
 	
 	\pagenumbering{arabic}
@@ -135,7 +139,6 @@
 	
 	\include{6_Fazit}
 	
-	
 	\part*{Anhang}
 	\clearpage
 	
@@ -144,13 +147,10 @@
 	\begin{asection}
 		\include{a_bearbeitungsaufteilung}
 	\end{asection}
-%
-%	\begin{bsection}
-%		\include{b_tile_service_vergleich}
-%	\end{bsection}
 	
 	\nocite{SMARTGREENS.2015}
 	\nocite{McClean.2018}
-	
+	\nocite{IE3.2017}
 	\printbibliography
+
 \end{document}
