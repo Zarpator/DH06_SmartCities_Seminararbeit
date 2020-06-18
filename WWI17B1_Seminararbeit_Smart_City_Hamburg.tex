@@ -123,7 +123,6 @@
 	\clearpage
 	
 	\listoffigures
-	%	\listoftables
 	\clearpage
 	
 	\pagenumbering{arabic}
@@ -142,15 +141,19 @@
 	\part*{Anhang}
 	\clearpage
 	
-	\include{beigabenverzeichnis}
-	
 	\begin{asection}
-		\include{a_bearbeitungsaufteilung}
+		\include{a_beigabenverzeichnis}
 	\end{asection}
+	
+	\begin{bsection}
+		\include{b_bearbeitungsaufteilung}
+	\end{bsection}
 	
 	\nocite{SMARTGREENS.2015}
 	\nocite{McClean.2018}
 	\nocite{IE3.2017}
 	\printbibliography
+	
+	
 
 \end{document}
